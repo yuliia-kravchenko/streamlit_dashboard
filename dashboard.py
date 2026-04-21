@@ -48,6 +48,14 @@ selected_max_adbudget = st.sidebar.slider(
     step=1000
 )
 
+df_filtered = df[
+    (df["Year"] == selected_year) &
+    (df["Region"].isin(selected_region)) &
+    (df["Industry"].isin(selected_industry)) &
+    (df["Scenario"] == selected_scenario) &
+    (df["AdBudget"] <= selected_max_adbudget)
+]
+
 show_map = st.sidebar.checkbox("Show the map with filtered companies")
 
 chart_option = st.sidebar.radio(
@@ -86,14 +94,6 @@ selected_model = st.sidebar.selectbox(
 )
 reg_x, reg_y = regression_options[selected_model]
 show_regression = st.sidebar.checkbox("Show regression", value=False)
-
-df_filtered = df[
-    (df["Year"] == selected_year) &
-    (df["Region"].isin(selected_region)) &
-    (df["Industry"].isin(selected_industry)) &
-    (df["Scenario"] == selected_scenario) &
-    (df["AdBudget"] <= selected_max_adbudget)
-]
 
 st.sidebar.markdown("Clustering Analysis")
 numeric_columns = df_filtered.select_dtypes(include=np.number).columns.tolist()
