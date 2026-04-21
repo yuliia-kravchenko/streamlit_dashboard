@@ -68,7 +68,6 @@ chart_option = st.sidebar.radio(
         "Scatter: Profit vs. Investment",
         "Conversion Histogram by Industry",
         "Funnel by Industry",
-        "Linear Regression"
     ]
 )
 
