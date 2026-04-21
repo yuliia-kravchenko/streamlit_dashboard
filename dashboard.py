@@ -33,14 +33,6 @@ st.set_page_config(
     }
 )
 
-df_filtered = df[
-    (df["Year"] == selected_year) &
-    (df["Region"].isin(selected_region)) &
-    (df["Industry"].isin(selected_industry)) &
-    (df["Scenario"] == selected_scenario) &
-    (df["AdBudget"] <= selected_max_adbudget)
-]
-
 st.sidebar.title("Filter Panel")
 
 selected_year = st.sidebar.selectbox("Year", sorted(df["Year"].unique()))
@@ -55,6 +47,14 @@ selected_max_adbudget = st.sidebar.slider(
     value=int(df["AdBudget"].max()),
     step=1000
 )
+
+df_filtered = df[
+    (df["Year"] == selected_year) &
+    (df["Region"].isin(selected_region)) &
+    (df["Industry"].isin(selected_industry)) &
+    (df["Scenario"] == selected_scenario) &
+    (df["AdBudget"] <= selected_max_adbudget)
+]
 
 show_map = st.sidebar.checkbox("Show the map with filtered companies")
 
