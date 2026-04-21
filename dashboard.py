@@ -122,7 +122,7 @@ st.download_button(
 if chart_option == "Revenue per customer vs. Expenses":
     st.subheader("Revenue per customer vs. Expenses")
     chart = px.scatter(
-        data=df,
+        df,
         x="Expenses",
         y="RevenuePerCustomer",
         color="Industry",
@@ -156,7 +156,7 @@ elif chart_option == "Bar chart: Average conversion rate by industry":
     st.subheader("Bar chart: Average conversion rate by industry")
     fig, ax = plt.subplots(figsize=(8, 5))
     chart = sns.barplot(
-        data=df,
+        df,
         x="Industry",
         y="ConversionRate",
         estimator="mean",
